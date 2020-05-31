@@ -23,6 +23,8 @@ mbData$Year <- factor(mbData$Year)
 mbData_melt <- melt(mbData, id = c("State", "Year", "Company"))
 mbData_melt <- mbData_melt[!(mbData_melt$variable == "Total"),]
 
+
+
 # Define UI for application that displays plots
 ui <- fluidPage(
   
@@ -109,8 +111,15 @@ ui <- fluidPage(
                  plotlyOutput("statePlot")
                ) #ends mainpanel
              ) #ends side bar layout
-    )#ends second panel
+    ),#ends second panel
     
+    tabPanel("LDA", "",
+             titlePanel("LDA Visualization"),
+             # create the json object, start a local file server, open in default browser
+             mainPanel(
+               includeHTML("LDA.html") 
+             ) #ends side bar layout
+    )#ends third panel
   )#ends tab panel
 ) #ends UI
 
